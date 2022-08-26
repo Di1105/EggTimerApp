@@ -11,9 +11,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var boiledTypeLabel: UILabel!
     
-    var softButton: EggButton = EggButton(image: UIImage(), buttonTitle: "Soft\nBoiled")
-    var mediumButton: EggButton = EggButton(image: UIImage(), buttonTitle: "Medium\nBoiled")
-    var hardButton: EggButton = EggButton(image: UIImage(), buttonTitle: "Hard\nBoiled")
+    var softButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Soft\nBoiled")
+    var mediumButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Medium\nBoiled")
+    var hardButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Hard\nBoiled")
     
     override func viewDidLoad() {
         super.viewDidLoad()

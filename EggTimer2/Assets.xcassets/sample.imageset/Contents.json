@@ -1,16 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Group 2.png",
-      "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "contrast",
-          "value" : "high"
-        }
-      ],
+      "filename" : "sample.png",
       "idiom" : "universal"
     }
   ],
