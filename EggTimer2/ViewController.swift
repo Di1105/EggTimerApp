@@ -8,15 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var softImage: UIImageView!
-    @IBOutlet weak var mediumImage: UIImageView!
     
-    @IBOutlet weak var hardImage: UIImageView!
+    @IBOutlet weak var boiledTypeLabel: UILabel!
+    
+    var softButton: EggButton = EggButton(image: UIImage(), buttonTitle: "Soft\nBoiled")
+    var mediumButton: EggButton = EggButton(image: UIImage(), buttonTitle: "Medium\nBoiled")
+    var hardButton: EggButton = EggButton(image: UIImage(), buttonTitle: "Hard\nBoiled")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        configureUI()
     }
 
     @IBAction func fridgeTemButton(_ sender: Any) {
@@ -35,6 +36,28 @@ class ViewController: UIViewController {
     
     
     @IBAction func startCookButton(_ sender: Any) {
+    }
+    
+    func configureUI() {
+        view.addSubview(softButton)
+        view.addSubview(mediumButton)
+        view.addSubview(hardButton)
+        NSLayoutConstraint.activate([
+            softButton.topAnchor.constraint(equalTo: boiledTypeLabel.bottomAnchor, constant: 20),
+            softButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            softButton.heightAnchor.constraint(equalToConstant: 133),
+            softButton.widthAnchor.constraint(equalToConstant: 85),
+            
+            mediumButton.topAnchor.constraint(equalTo: boiledTypeLabel.bottomAnchor, constant: 20),
+            mediumButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            mediumButton.heightAnchor.constraint(equalToConstant: 133),
+            mediumButton.widthAnchor.constraint(equalToConstant: 85),
+            
+            hardButton.topAnchor.constraint(equalTo: boiledTypeLabel.bottomAnchor, constant: 20),
+            hardButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            hardButton.heightAnchor.constraint(equalToConstant: 133),
+            hardButton.widthAnchor.constraint(equalToConstant: 85)
+        ])
     }
     
 }
