@@ -9,21 +9,35 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let softTime = 5
-    let mediumTime = 7
-    let hardTime = 12
+  
+    @IBOutlet weak var smallSize: UIButton!
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func sizeButton(_ sender: Any) {
-        
-       
-    }
-    
 
+    }
+    
+    @IBAction func eggTemp(_ sender: UIButton) {
+        let eggTempature = sender.titleLabel?.text
+        print(eggTempature!)
+        
+    }
+    
+    
+    @IBAction func eggSize(_ sender: UIButton) {
+        let eggSizer = sender.titleLabel?.text
+        print(eggSizer!)
+        
+    }
+    
+    
+    @IBAction func eggType(_ sender: UIButton) {
+        let eggTyper = sender.titleLabel?.text
+        print(eggTyper!)
+        
+    }
     
 }
 
