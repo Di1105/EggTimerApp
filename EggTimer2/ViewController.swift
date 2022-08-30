@@ -11,6 +11,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var boiledTypeLabel: UILabel!
     
+    var eggButtonStackview = UIStackView()
+    
     var softButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Soft\nBoiled")
     var mediumButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Medium\nBoiled")
     var hardButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Hard\nBoiled")
@@ -39,24 +41,29 @@ class ViewController: UIViewController {
     }
     
     func configureUI() {
-        view.addSubview(softButton)
-        view.addSubview(mediumButton)
-        view.addSubview(hardButton)
+        view.addSubview(eggButtonStackview)
+        eggButtonStackview.translatesAutoresizingMaskIntoConstraints = false
+        eggButtonStackview.axis = .horizontal
+        eggButtonStackview.distribution = .equalSpacing
+        eggButtonStackview.alignment = .center
+        eggButtonStackview.addArrangedSubview(softButton)
+        eggButtonStackview.addArrangedSubview(mediumButton)
+        eggButtonStackview.addArrangedSubview(hardButton)
+        
         NSLayoutConstraint.activate([
-            softButton.topAnchor.constraint(equalTo: boiledTypeLabel.bottomAnchor, constant: 20),
-            softButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             softButton.heightAnchor.constraint(equalToConstant: 133),
             softButton.widthAnchor.constraint(equalToConstant: 85),
             
-            mediumButton.topAnchor.constraint(equalTo: boiledTypeLabel.bottomAnchor, constant: 20),
-            mediumButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             mediumButton.heightAnchor.constraint(equalToConstant: 133),
             mediumButton.widthAnchor.constraint(equalToConstant: 85),
             
-            hardButton.topAnchor.constraint(equalTo: boiledTypeLabel.bottomAnchor, constant: 20),
-            hardButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             hardButton.heightAnchor.constraint(equalToConstant: 133),
-            hardButton.widthAnchor.constraint(equalToConstant: 85)
+            hardButton.widthAnchor.constraint(equalToConstant: 85),
+            
+            eggButtonStackview.topAnchor.constraint(equalTo: boiledTypeLabel.bottomAnchor, constant: 20),
+            eggButtonStackview.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8),
+            eggButtonStackview.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8),
+            eggButtonStackview.heightAnchor.constraint(equalToConstant: 133)
         ])
     }
     
