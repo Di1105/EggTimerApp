@@ -9,43 +9,56 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var eggTemp = ""
-    var eggSize = ""
-    var eggType = ""
-    var cookTime = Int()
-  
-  
-    @IBOutlet weak var smallSize: UIButton!
+    @IBOutlet weak var boiledTypeLabel: UILabel!
     
-
+    var softButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Soft\nBoiled")
+    var mediumButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Medium\nBoiled")
+    var hardButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Hard\nBoiled")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
+    }
 
+    @IBAction func fridgeTemButton(_ sender: Any) {
+    }
+    @IBAction func roomTempbutton(_ sender: Any) {
     }
     
-    @IBAction func eggTemp(_ sender: UIButton) {
-        if let eggTempature = sender.titleLabel?.text{
-            eggTemp = eggTempature
-        }
+    @IBAction func smallButton(_ sender: Any) {
+    }
+    
+    @IBAction func mediumButton(_ sender: Any) {
+    }
+    
+    @IBAction func largebutton(_ sender: Any) {
     }
     
     
-    @IBAction func eggSize(_ sender: UIButton) {
-        if let eggSizer = sender.titleLabel?.text{
-        eggSize = eggSizer
-        }
+    @IBAction func startCookButton(_ sender: Any) {
     }
     
-    
-    @IBAction func eggType(_ sender: UIButton) {
-        if let eggTyper = sender.titleLabel?.text{
-        eggType = eggTyper
-        }
+    func configureUI() {
+        view.addSubview(softButton)
+        view.addSubview(mediumButton)
+        view.addSubview(hardButton)
+        NSLayoutConstraint.activate([
+            softButton.topAnchor.constraint(equalTo: boiledTypeLabel.bottomAnchor, constant: 20),
+            softButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            softButton.heightAnchor.constraint(equalToConstant: 133),
+            softButton.widthAnchor.constraint(equalToConstant: 85),
+            
+            mediumButton.topAnchor.constraint(equalTo: boiledTypeLabel.bottomAnchor, constant: 20),
+            mediumButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            mediumButton.heightAnchor.constraint(equalToConstant: 133),
+            mediumButton.widthAnchor.constraint(equalToConstant: 85),
+            
+            hardButton.topAnchor.constraint(equalTo: boiledTypeLabel.bottomAnchor, constant: 20),
+            hardButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            hardButton.heightAnchor.constraint(equalToConstant: 133),
+            hardButton.widthAnchor.constraint(equalToConstant: 85)
+        ])
     }
     
-    @IBAction func startCook(_ sender: Any) {
-      
-    }
 }
 
