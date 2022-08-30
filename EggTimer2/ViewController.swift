@@ -9,6 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var eggTemp = ""
+    var eggSize = ""
+    var eggType = ""
+    var cookTime = Int()
+  
   
     @IBOutlet weak var smallSize: UIButton!
     
@@ -20,24 +25,27 @@ class ViewController: UIViewController {
     }
     
     @IBAction func eggTemp(_ sender: UIButton) {
-        let eggTempature = sender.titleLabel?.text
-        print(eggTempature!)
-        
+        if let eggTempature = sender.titleLabel?.text{
+            eggTemp = eggTempature
+        }
     }
     
     
     @IBAction func eggSize(_ sender: UIButton) {
-        let eggSizer = sender.titleLabel?.text
-        print(eggSizer!)
-        
+        if let eggSizer = sender.titleLabel?.text{
+        eggSize = eggSizer
+        }
     }
     
     
     @IBAction func eggType(_ sender: UIButton) {
-        let eggTyper = sender.titleLabel?.text
-        print(eggTyper!)
-        
+        if let eggTyper = sender.titleLabel?.text{
+        eggType = eggTyper
+        }
     }
     
+    @IBAction func startCook(_ sender: Any) {
+      
+    }
 }
 
