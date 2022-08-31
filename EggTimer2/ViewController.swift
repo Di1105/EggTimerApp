@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var boiledTypeLabel: UILabel!
     
     var eggButtonStackview = UIStackView()
+    var tempatureEgg = ""
+    var sizeEgg = ""
     
     var softButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Soft\nBoiled")
     var mediumButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Medium\nBoiled")
@@ -22,23 +24,7 @@ class ViewController: UIViewController {
         configureUI()
     }
 
-    @IBAction func fridgeTemButton(_ sender: Any) {
-    }
-    @IBAction func roomTempbutton(_ sender: Any) {
-    }
-    
-    @IBAction func smallButton(_ sender: Any) {
-    }
-    
-    @IBAction func mediumButton(_ sender: Any) {
-    }
-    
-    @IBAction func largebutton(_ sender: Any) {
-    }
-    
-    
-    @IBAction func startCookButton(_ sender: Any) {
-    }
+
     
     func configureUI() {
         view.addSubview(eggButtonStackview)
@@ -67,5 +53,24 @@ class ViewController: UIViewController {
         ])
     }
     
+    @IBAction func conditionSelected(_ sender: UIButton) {
+        
+        if tempatureEgg == sender.titleLabel?.text{
+            print(tempatureEgg)
+        
+        }
+        
+    }
+    
+    
+    @IBAction func sizeSelected(_ sender: UIButton) {
+        if sizeEgg == sender.titleLabel?.text{
+            print(sizeEgg)
+        }
+        
+    }
+    
+    
+   
 }
 

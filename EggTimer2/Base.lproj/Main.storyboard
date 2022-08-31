@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -43,17 +43,16 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Fridge Tempature"/>
                                 <connections>
-                                    <action selector="FridgeTemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pkF-Ak-l73"/>
-                                    <action selector="fridgeTemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xsd-ac-fsR"/>
+                                    <action selector="conditionSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hWl-p7-aek"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyJ-SL-FgS">
                                 <rect key="frame" x="216" y="284" width="145" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="RoomTempature"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Room Tempature"/>
                                 <connections>
-                                    <action selector="roomTempbutton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hRq-fS-LOI"/>
+                                    <action selector="conditionSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ko4-Xt-JT2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Egg size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S29-BE-8g1">
@@ -69,7 +68,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="S"/>
                                 <connections>
-                                    <action selector="smallButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I2R-rM-e43"/>
+                                    <action selector="sizeSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uwj-p0-sZz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ByR-MD-Bp8">
@@ -78,7 +77,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="M"/>
                                 <connections>
-                                    <action selector="mediumButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cDC-WL-pGI"/>
+                                    <action selector="sizeSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L6q-Nk-VS8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiO-kJ-5qM">
@@ -87,7 +86,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="L"/>
                                 <connections>
-                                    <action selector="largebutton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wk3-cC-Py3"/>
+                                    <action selector="sizeSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Xh-6D-RDj"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Egg boiled type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adI-Dr-dfY">
@@ -102,9 +101,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Start Cooking"/>
-                                <connections>
-                                    <action selector="startCookButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HPy-Vf-Hcj"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
