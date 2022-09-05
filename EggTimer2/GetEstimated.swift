@@ -11,7 +11,7 @@ struct GetEstimated{
     
     
     
-    mutating func getEstimatedBoiledTime(tempature: String, size: String, hardness: String){
+    mutating func getEstimatedBoiledTime(tempature: String, size: String, hardness: String) -> Int{
         
         var estimatedBoiledTime : Int?
         
@@ -94,7 +94,7 @@ struct GetEstimated{
         }
         
     }
-        print(estimatedBoiledTime ?? 0)
+        return estimatedBoiledTime!
 }
 
 }

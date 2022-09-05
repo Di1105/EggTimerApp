@@ -7,19 +7,28 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
     
     var eggSize = ""
     var eggTemp = ""
+    var eggType = ""
+    
+    @IBOutlet weak var fridegeTemp: UIButton!
+    @IBOutlet weak var roomTemp: UIButton!
+    @IBOutlet weak var smallSize: UIButton!
+    @IBOutlet weak var mediumSize: UIButton!
+    @IBOutlet weak var largeSize: UIButton!
     
     @IBOutlet weak var boiledTypeLabel: UILabel!
+    
+    
     
     var eggButtonStackview = UIStackView()
     
     
-    var softButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Soft\nBoiled")
-    var mediumButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Medium\nBoiled")
-    var hardButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Hard\nBoiled")
+    var softButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Soft")
+    var mediumButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Medium")
+    var hardButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Hard")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,17 +70,40 @@ class ViewController: UIViewController {
     }
     
     @objc func eggTypeSelected(_ sender: EggButton){
-        let eggType = sender.buttonTitle.text
-        print(eggType ?? "")
+        let eggTyper = sender.buttonTitle.text
+        self.eggType = eggTyper ?? ""
+        if eggType == "Soft"{
+           // seçilen yumurta belirginleştirilecek
+        }else if eggType == "Medium"{
+          
             
+        }else{
+           
+            
+        }
+        print(eggType)
+        
         
     }
     
     @IBAction func conditionSelected(_ sender: UIButton) {
         
-        if let tempatureEgg = sender.titleLabel?.text{
-            //eggTemp = tempatureEgg
-            print(tempatureEgg)
+        if let eggTemper = sender.titleLabel?.text{
+            self.eggTemp = eggTemper
+            if sender.titleLabel?.text == "Fridge Temperature"{
+                fridegeTemp.configuration = .filled()
+                fridegeTemp.configuration?.title = "Fridge Temperature"
+                roomTemp.configuration = .plain()
+                roomTemp.configuration?.title = "Room Temperature"
+                
+                
+            }else{
+                roomTemp.configuration = .filled()
+                roomTemp.configuration?.title = "Room Temperature"
+                fridegeTemp.configuration = .plain()
+                fridegeTemp.configuration?.title = "Fridge Temperature"
+            }
+            print(eggTemp)
         
         }
         
@@ -79,18 +111,70 @@ class ViewController: UIViewController {
     
     
     @IBAction func sizeSelected(_ sender: UIButton) {
-        if let sizeEgg = sender.titleLabel?.text{
-            eggSize = sizeEgg
+        if sender.titleLabel?.text == "M"{
+            mediumSize.configuration = .filled()
+            mediumSize.configuration?.title = "M"
+            smallSize.configuration = .plain()
+            smallSize.configuration?.title = "S"
+            largeSize.configuration = .plain()
+            largeSize.configuration?.title = "L"
+        }else if sender.titleLabel?.text == "S"{
+            smallSize.configuration = .filled()
+            smallSize.configuration?.title = "S"
+            mediumSize.configuration = .plain()
+            mediumSize.configuration?.title = "M"
+            largeSize.configuration = .plain()
+            largeSize.configuration?.title = "L"
+        }else{
+            largeSize.configuration = .filled()
+            largeSize.configuration?.title = "L"
+            smallSize.configuration = .plain()
+            smallSize.configuration?.title = "S"
+            mediumSize.configuration = .plain()
+            mediumSize.configuration?.title = "M"
+            
+        }
+        if let eggSizer = sender.titleLabel?.text{
+            self.eggSize = eggSizer
             print(eggSize)
+            
+            
         }
         
     }
     
     
+    
     @IBAction func startCook(_ sender: UIButton) {
-        var startCook = GetEstimated()
-        startCook.getEstimatedBoiledTime(tempature: eggTemp, size: eggSize, hardness: "Soft")
+        if eggTemp == ""{
+            makeAlert(titleInput:"Error" , messageInput: "select egg temperature")
+        }else if eggSize == ""{
+            makeAlert(titleInput:"Error" , messageInput: "select egg size")
+        }else if eggType == ""{
+            makeAlert(titleInput:"Error" , messageInput: "select egg type")
+        }else{
+            var cookStart = GetEstimated()
+            let cookingTime = cookStart.getEstimatedBoiledTime(tempature: eggTemp, size: eggSize, hardness: eggType)
+            print(cookingTime)
+            
+            }
+        performSegue(withIdentifier: "toDetailVC", sender: nil)
+    }
         
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailVC"{
+            let destinationVC = segue.destination as! DetailVC
+            //segue sonrası bilgi aktarımını yapamadım
+            //destinationVC.eggImage = UIImage(named: "sample") as? UIImageView
+            //destinationVC.whichEggLabel.text! = "\(eggType) Boiled Egg Cooking..."
+        }
+    }
+    
+    func makeAlert(titleInput:String,messageInput:String){
+        let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
     }
     
    
