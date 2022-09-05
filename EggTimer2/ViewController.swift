@@ -9,11 +9,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var eggSize = ""
+    var eggTemp = ""
+    
     @IBOutlet weak var boiledTypeLabel: UILabel!
     
     var eggButtonStackview = UIStackView()
-    var tempatureEgg = ""
-    var sizeEgg = ""
+    
     
     var softButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Soft\nBoiled")
     var mediumButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Medium\nBoiled")
@@ -47,16 +49,17 @@ class ViewController: UIViewController {
             hardButton.widthAnchor.constraint(equalToConstant: 85),
             
             eggButtonStackview.topAnchor.constraint(equalTo: boiledTypeLabel.bottomAnchor, constant: 20),
-            eggButtonStackview.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8),
-            eggButtonStackview.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8),
+            eggButtonStackview.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
+            eggButtonStackview.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
             eggButtonStackview.heightAnchor.constraint(equalToConstant: 133)
         ])
     }
     
     @IBAction func conditionSelected(_ sender: UIButton) {
         
-        if tempatureEgg == sender.titleLabel?.text{
-            print(tempatureEgg)
+        if let tempatureEgg = sender.titleLabel?.text{
+            eggTemp = tempatureEgg
+            print(eggTemp)
         
         }
         
@@ -64,12 +67,19 @@ class ViewController: UIViewController {
     
     
     @IBAction func sizeSelected(_ sender: UIButton) {
-        if sizeEgg == sender.titleLabel?.text{
-            print(sizeEgg)
+        if let sizeEgg = sender.titleLabel?.text{
+            eggSize = sizeEgg
+            print(eggSize)
         }
         
     }
     
+    
+    @IBAction func startCook(_ sender: UIButton) {
+        var startCook = GetEstimated()
+        startCook.getEstimatedBoiledTime(tempature: eggTemp, size: eggSize, hardness: "Soft")
+        
+    }
     
    
 }

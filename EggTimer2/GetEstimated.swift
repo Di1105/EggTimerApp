@@ -9,10 +9,12 @@ import Foundation
 
 struct GetEstimated{
     
-
-func getEstimatedBoiledTime(tempature: String, size: String, hardness: String) {
+   
     
-    var estimatedBoiledTime = 0
+    mutating func getEstimatedBoiledTime(tempature: String, size: String, hardness: String){
+        
+        var estimatedBoiledTime : Int
+        
     if tempature == "Fridge temperature" {
         if size == "S" {
             if hardness == "Soft" {
