@@ -53,13 +53,25 @@ class ViewController: UIViewController {
             eggButtonStackview.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
             eggButtonStackview.heightAnchor.constraint(equalToConstant: 133)
         ])
+        
+        softButton.addTarget(self, action: #selector(eggTypeSelected), for: .touchUpInside)
+        mediumButton.addTarget(self, action: #selector(eggTypeSelected), for: .touchUpInside)
+        hardButton.addTarget(self, action: #selector(eggTypeSelected), for: .touchUpInside)
+
+    }
+    
+    @objc func eggTypeSelected(_ sender: EggButton){
+        let eggType = sender.buttonTitle.text
+        print(eggType ?? "")
+            
+        
     }
     
     @IBAction func conditionSelected(_ sender: UIButton) {
         
         if let tempatureEgg = sender.titleLabel?.text{
-            eggTemp = tempatureEgg
-            print(eggTemp)
+            //eggTemp = tempatureEgg
+            print(tempatureEgg)
         
         }
         
