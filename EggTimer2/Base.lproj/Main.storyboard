@@ -37,20 +37,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krB-61-x1U">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krB-61-x1U" userLabel="Fridge Temperature">
                                 <rect key="frame" x="41" y="284" width="145" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Fridge Tempature"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Fridge Temperature"/>
                                 <connections>
                                     <action selector="conditionSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hWl-p7-aek"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyJ-SL-FgS">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyJ-SL-FgS" userLabel="Room Temperature">
                                 <rect key="frame" x="216" y="284" width="145" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Room Tempature"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Room Temperature"/>
                                 <connections>
                                     <action selector="conditionSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ko4-Xt-JT2"/>
                                 </connections>
@@ -111,7 +111,6 @@
                     </view>
                     <connections>
                         <outlet property="boiledTypeLabel" destination="adI-Dr-dfY" id="hSF-ir-RrE"/>
-                        <outlet property="cookStart" destination="g8x-VB-nAD" id="pCd-nl-pw1"/>
                         <segue destination="rW5-ot-G9l" kind="presentation" identifier="toDetailVC" modalPresentationStyle="fullScreen" id="Jyy-pE-Cpt"/>
                     </connections>
                 </viewController>
