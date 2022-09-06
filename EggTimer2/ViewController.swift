@@ -12,6 +12,7 @@ class ViewController: UIViewController{
     var eggSize = ""
     var eggTemp = ""
     var eggType = ""
+    var cookingTime = 0
     
     @IBOutlet weak var fridegeTemp: UIButton!
     @IBOutlet weak var roomTemp: UIButton!
@@ -158,7 +159,7 @@ class ViewController: UIViewController{
             makeAlert(titleInput:"Error" , messageInput: "select egg type")
         }else{
             var cookStart = GetEstimated()
-            let cookingTime = cookStart.getEstimatedBoiledTime(tempature: eggTemp, size: eggSize, hardness: eggType)
+            cookingTime = cookStart.getEstimatedBoiledTime(tempature: eggTemp, size: eggSize, hardness: eggType)
             print(cookingTime)
             
             }
@@ -168,9 +169,10 @@ class ViewController: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailVC"{
             let destinationVC = segue.destination as! DetailVC
-            //segue sonrası bilgi aktarımını yapamadım
-            //destinationVC.eggImage = UIImage(named: "sample") as? UIImageView
-            //destinationVC.whichEggLabel.text! = "\(eggType) Boiled Egg Cooking..."
+            destinationVC.counter = cookingTime
+            //destinationVC.whichEggLabel.text = "\(eggType) Boiled Egg"
+            
+            
         }
     }
     
