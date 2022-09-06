@@ -19,6 +19,7 @@ class DetailVC: UIViewController {
     
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var pauseOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,15 @@ class DetailVC: UIViewController {
     }
     
 
-    @IBAction func pauseButton(_ sender: Any) {
+    @IBAction func pauseButton(_ sender: UIButton) {
+        if timer.isValid == true{
+            timer.invalidate()
+            pauseOutlet.titleLabel?.text = "Start"
+        }else{
+            timerFunction()
+        }
+       
+        
     }
 
 

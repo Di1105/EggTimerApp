@@ -184,6 +184,7 @@
                     <navigationItem key="navigationItem" id="yz1-vH-QW0"/>
                     <connections>
                         <outlet property="eggImage" destination="uQf-Hh-EZu" id="6Lb-eU-0fw"/>
+                        <outlet property="pauseOutlet" destination="MR8-wG-b8W" id="vVo-Ug-mJc"/>
                         <outlet property="timeLabel" destination="xNM-QR-3vw" id="eya-hl-Chb"/>
                         <outlet property="whichEggLabel" destination="mnT-8T-uax" id="Dgp-oK-UMd"/>
                     </connections>
