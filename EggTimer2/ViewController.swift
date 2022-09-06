@@ -73,13 +73,17 @@ class ViewController: UIViewController{
         let eggTyper = sender.buttonTitle.text
         self.eggType = eggTyper ?? ""
         if eggType == "Soft"{
-           // seçilen yumurta belirginleştirilecek
+            softButton.alpha = 1
+            mediumButton.alpha = 0.5
+            hardButton.alpha = 0.5
         }else if eggType == "Medium"{
-          
-            
+            softButton.alpha = 0.5
+            mediumButton.alpha = 1
+            hardButton.alpha = 0.5
         }else{
-           
-            
+            softButton.alpha = 0.5
+            mediumButton.alpha = 0.5
+            hardButton.alpha = 1
         }
         print(eggType)
         
