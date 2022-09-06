@@ -170,7 +170,7 @@ class ViewController: UIViewController{
         if segue.identifier == "toDetailVC"{
             let destinationVC = segue.destination as! DetailVC
             destinationVC.counter = cookingTime
-            //destinationVC.whichEggLabel.text = "\(eggType) Boiled Egg"
+            destinationVC.eggLabel = eggType
             
             
         }

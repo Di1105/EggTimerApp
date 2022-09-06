@@ -11,6 +11,7 @@ class DetailVC: UIViewController {
 
     var counter = 0
     var timer = Timer()
+    var eggLabel = ""
     
     @IBOutlet weak var eggImage: UIImageView!
     
@@ -24,6 +25,7 @@ class DetailVC: UIViewController {
         eggImage.image = UIImage(named: "egg1")
         timeLabel.text = "Time: \(counter)"
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
+        whichEggLabel.text = "\(eggLabel) boiled egg"
     }
     
     @objc func timerFunction(){
