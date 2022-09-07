@@ -48,6 +48,7 @@ class ViewController: UIViewController{
         eggButtonStackview.translatesAutoresizingMaskIntoConstraints = false
         eggButtonStackview.axis = .horizontal
         eggButtonStackview.distribution = .equalSpacing
+        eggButtonStackview.spacing = 16
         eggButtonStackview.alignment = .center
         eggButtonStackview.addArrangedSubview(softButton)
         eggButtonStackview.addArrangedSubview(mediumButton)
@@ -63,7 +64,7 @@ class ViewController: UIViewController{
             hardButton.heightAnchor.constraint(equalToConstant: 133),
             hardButton.widthAnchor.constraint(equalToConstant: 85),
             
-            eggButtonStackview.topAnchor.constraint(equalTo: boiledTypeLabel.bottomAnchor, constant: 20),
+            eggButtonStackview.topAnchor.constraint(equalTo: boiledTypeLabel.bottomAnchor, constant: 34),
             eggButtonStackview.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
             eggButtonStackview.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
             eggButtonStackview.heightAnchor.constraint(equalToConstant: 133)
