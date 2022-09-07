@@ -34,6 +34,11 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        roomTemp.alpha = 0.5
+        smallSize.alpha = 0.5
+        largeSize.alpha = 0.5
+        mediumButton.alpha = 0.5
+        hardButton.alpha = 0.5
     }
 
 
@@ -96,17 +101,12 @@ class ViewController: UIViewController{
         if let eggTemper = sender.titleLabel?.text{
             self.eggTemp = eggTemper
             if sender.titleLabel?.text == "Fridge Temperature"{
-                fridegeTemp.configuration = .filled()
-                fridegeTemp.configuration?.title = "Fridge Temperature"
-                roomTemp.configuration = .plain()
-                roomTemp.configuration?.title = "Room Temperature"
-                
+                fridegeTemp.alpha = 1
+                roomTemp.alpha = 0.5
                 
             }else{
-                roomTemp.configuration = .filled()
-                roomTemp.configuration?.title = "Room Temperature"
-                fridegeTemp.configuration = .plain()
-                fridegeTemp.configuration?.title = "Fridge Temperature"
+                fridegeTemp.alpha = 0.5
+                roomTemp.alpha = 1
             }
             print(eggTemp)
         
@@ -117,26 +117,17 @@ class ViewController: UIViewController{
     
     @IBAction func sizeSelected(_ sender: UIButton) {
         if sender.titleLabel?.text == "M"{
-            mediumSize.configuration = .filled()
-            mediumSize.configuration?.title = "M"
-            smallSize.configuration = .plain()
-            smallSize.configuration?.title = "S"
-            largeSize.configuration = .plain()
-            largeSize.configuration?.title = "L"
+            mediumSize.alpha = 1
+            smallSize.alpha = 0.5
+            largeSize.alpha = 0.5
         }else if sender.titleLabel?.text == "S"{
-            smallSize.configuration = .filled()
-            smallSize.configuration?.title = "S"
-            mediumSize.configuration = .plain()
-            mediumSize.configuration?.title = "M"
-            largeSize.configuration = .plain()
-            largeSize.configuration?.title = "L"
+            mediumSize.alpha = 0.5
+            smallSize.alpha = 1
+            largeSize.alpha = 0.5
         }else{
-            largeSize.configuration = .filled()
-            largeSize.configuration?.title = "L"
-            smallSize.configuration = .plain()
-            smallSize.configuration?.title = "S"
-            mediumSize.configuration = .plain()
-            mediumSize.configuration?.title = "M"
+            mediumSize.alpha = 0.5
+            smallSize.alpha = 0.5
+            largeSize.alpha = 1
             
         }
         if let eggSizer = sender.titleLabel?.text{

@@ -66,12 +66,12 @@
 				C6A7C46A28B61D6B0047868B /* SceneDelegate.swift */,
 				C6A7C46C28B61D6B0047868B /* ViewController.swift */,
 				C6A7C48328B637E00047868B /* DetailVC.swift */,
-				C6A7C46E28B61D6B0047868B /* Main.storyboard */,
 				12D559B728B915E7009A8608 /* EggButton.swift */,
+				C6B1EB8E28BE94120042474C /* GetEstimated.swift */,
+				C6A7C46E28B61D6B0047868B /* Main.storyboard */,
 				C6A7C47128B61D6D0047868B /* Assets.xcassets */,
 				C6A7C47328B61D6D0047868B /* LaunchScreen.storyboard */,
 				C6A7C47628B61D6D0047868B /* Info.plist */,
-				C6B1EB8E28BE94120042474C /* GetEstimated.swift */,
 			);
 			path = EggTimer2;
 			sourceTree = "<group>";

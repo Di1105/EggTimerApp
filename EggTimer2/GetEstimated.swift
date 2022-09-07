@@ -18,7 +18,7 @@ struct GetEstimated{
     if tempature == "Fridge Temperature" {
         if size == "S" {
             if hardness == "Soft" {
-                estimatedBoiledTime = 3
+                estimatedBoiledTime = 270
                 
             } else if hardness == "Medium" {
                 estimatedBoiledTime = 390
