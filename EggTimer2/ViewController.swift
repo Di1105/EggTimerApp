@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController{
     
+    let mainColor = UIColor(named: "buttonColor")
+    
     var eggSize = ""
     var eggTemp = ""
     var eggType = ""
@@ -19,13 +21,10 @@ class ViewController: UIViewController{
     @IBOutlet weak var smallSize: UIButton!
     @IBOutlet weak var mediumSize: UIButton!
     @IBOutlet weak var largeSize: UIButton!
-    
+    @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var boiledTypeLabel: UILabel!
     
-    
-    
     var eggButtonStackview = UIStackView()
-    
     
     var softButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Soft")
     var mediumButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Medium")
@@ -34,46 +33,7 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        roomTemp.alpha = 0.5
-        smallSize.alpha = 0.5
-        largeSize.alpha = 0.5
-        mediumButton.alpha = 0.5
-        hardButton.alpha = 0.5
-    }
-
-
-    
-    func configureUI() {
-        view.addSubview(eggButtonStackview)
-        eggButtonStackview.translatesAutoresizingMaskIntoConstraints = false
-        eggButtonStackview.axis = .horizontal
-        eggButtonStackview.distribution = .equalSpacing
-        eggButtonStackview.spacing = 16
-        eggButtonStackview.alignment = .center
-        eggButtonStackview.addArrangedSubview(softButton)
-        eggButtonStackview.addArrangedSubview(mediumButton)
-        eggButtonStackview.addArrangedSubview(hardButton)
-        
-        NSLayoutConstraint.activate([
-            softButton.heightAnchor.constraint(equalToConstant: 133),
-            softButton.widthAnchor.constraint(equalToConstant: 85),
-            
-            mediumButton.heightAnchor.constraint(equalToConstant: 133),
-            mediumButton.widthAnchor.constraint(equalToConstant: 85),
-            
-            hardButton.heightAnchor.constraint(equalToConstant: 133),
-            hardButton.widthAnchor.constraint(equalToConstant: 85),
-            
-            eggButtonStackview.topAnchor.constraint(equalTo: boiledTypeLabel.bottomAnchor, constant: 34),
-            eggButtonStackview.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
-            eggButtonStackview.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
-            eggButtonStackview.heightAnchor.constraint(equalToConstant: 133)
-        ])
-        
-        softButton.addTarget(self, action: #selector(eggTypeSelected), for: .touchUpInside)
-        mediumButton.addTarget(self, action: #selector(eggTypeSelected), for: .touchUpInside)
-        hardButton.addTarget(self, action: #selector(eggTypeSelected), for: .touchUpInside)
-
+        configureButtons()
     }
     
     @objc func eggTypeSelected(_ sender: EggButton){
@@ -92,9 +52,6 @@ class ViewController: UIViewController{
             mediumButton.alpha = 0.5
             hardButton.alpha = 1
         }
-        print(eggType)
-        
-        
     }
     
     @IBAction func conditionSelected(_ sender: UIButton) {
@@ -109,10 +66,7 @@ class ViewController: UIViewController{
                 fridegeTemp.alpha = 0.5
                 roomTemp.alpha = 1
             }
-            print(eggTemp)
-        
         }
-        
     }
     
     
@@ -133,11 +87,7 @@ class ViewController: UIViewController{
         }
         if let eggSizer = sender.titleLabel?.text{
             self.eggSize = eggSizer
-            print(eggSize)
-            
-            
         }
-        
     }
     
     
@@ -152,9 +102,7 @@ class ViewController: UIViewController{
         }else{
             var cookStart = GetEstimated()
             cookingTime = cookStart.getEstimatedBoiledTime(tempature: eggTemp, size: eggSize, hardness: eggType)
-            print(cookingTime)
-            
-            }
+        }
         performSegue(withIdentifier: "toDetailVC", sender: nil)
     }
         
@@ -175,6 +123,65 @@ class ViewController: UIViewController{
         self.present(alert, animated: true, completion: nil)
     }
     
-   
+    func configureUI() {
+        view.addSubview(eggButtonStackview)
+        eggButtonStackview.translatesAutoresizingMaskIntoConstraints = false
+        eggButtonStackview.axis = .horizontal
+        eggButtonStackview.distribution = .equalSpacing
+        eggButtonStackview.spacing = 16
+        eggButtonStackview.alignment = .center
+        eggButtonStackview.addArrangedSubview(softButton)
+        eggButtonStackview.addArrangedSubview(mediumButton)
+        eggButtonStackview.addArrangedSubview(hardButton)
+        
+        NSLayoutConstraint.activate([
+            softButton.heightAnchor.constraint(equalToConstant: 150),
+            softButton.widthAnchor.constraint(equalToConstant: 100),
+            
+            mediumButton.heightAnchor.constraint(equalToConstant: 150),
+            mediumButton.widthAnchor.constraint(equalToConstant: 100),
+            
+            hardButton.heightAnchor.constraint(equalToConstant: 150),
+            hardButton.widthAnchor.constraint(equalToConstant: 100),
+            
+            eggButtonStackview.topAnchor.constraint(equalTo: boiledTypeLabel.bottomAnchor, constant: 34),
+            eggButtonStackview.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            eggButtonStackview.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
+            eggButtonStackview.heightAnchor.constraint(equalToConstant: 150)
+        ])
+        
+        softButton.addTarget(self, action: #selector(eggTypeSelected), for: .touchUpInside)
+        mediumButton.addTarget(self, action: #selector(eggTypeSelected), for: .touchUpInside)
+        hardButton.addTarget(self, action: #selector(eggTypeSelected), for: .touchUpInside)
+
+    }
+    
+    func configureButtons() {
+        let borderWidth: CGFloat = 1
+        let cornerRadius: CGFloat = 10
+        fridegeTemp.layer.borderWidth = borderWidth
+        fridegeTemp.layer.cornerRadius = cornerRadius
+        fridegeTemp.layer.borderColor = mainColor?.cgColor
+        fridegeTemp.setTitleColor(mainColor, for: .normal)
+        roomTemp.layer.borderWidth = borderWidth
+        roomTemp.layer.cornerRadius = cornerRadius
+        roomTemp.layer.borderColor = mainColor?.cgColor
+        roomTemp.setTitleColor(mainColor, for: .normal)
+        smallSize.layer.borderWidth = borderWidth
+        smallSize.layer.cornerRadius = cornerRadius
+        smallSize.layer.borderColor = mainColor?.cgColor
+        smallSize.setTitleColor(mainColor, for: .normal)
+        mediumSize.layer.borderWidth = borderWidth
+        mediumSize.layer.cornerRadius = cornerRadius
+        mediumSize.layer.borderColor = mainColor?.cgColor
+        mediumSize.setTitleColor(mainColor, for: .normal)
+        largeSize.layer.borderWidth = borderWidth
+        largeSize.layer.cornerRadius = cornerRadius
+        largeSize.layer.borderColor = mainColor?.cgColor
+        largeSize.setTitleColor(mainColor, for: .normal)
+        startButton.layer.cornerRadius = cornerRadius
+        startButton.setTitleColor(.systemBackground, for: .normal)
+        startButton.backgroundColor = UIColor(named: "buttonColor")
+    }
 }
 

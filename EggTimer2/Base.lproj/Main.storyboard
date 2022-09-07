@@ -51,8 +51,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="24F-LB-61q"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Start Cooking"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Start Cooking"/>
                                 <connections>
                                     <action selector="startCook:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dvm-zT-INy"/>
                                 </connections>
@@ -146,6 +146,7 @@
                         <outlet property="mediumSize" destination="ByR-MD-Bp8" id="Dhy-wi-ugy"/>
                         <outlet property="roomTemp" destination="uyJ-SL-FgS" id="gZK-Gu-2X1"/>
                         <outlet property="smallSize" destination="FOe-eJ-Jg9" id="qK9-wH-3u1"/>
+                        <outlet property="startButton" destination="g8x-VB-nAD" id="yJY-ag-tDc"/>
                         <segue destination="rW5-ot-G9l" kind="show" identifier="toDetailVC" id="Jyy-pE-Cpt"/>
                     </connections>
                 </viewController>
