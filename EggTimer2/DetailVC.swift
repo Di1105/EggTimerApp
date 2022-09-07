@@ -25,14 +25,14 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
         eggImage.image = UIImage(named: "egg1")
         timeLabel.text = "Time: \(counter)"
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
         whichEggLabel.text = "\(eggLabel) boiled egg"
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
     }
     
     @objc func timerFunction(){
         timeLabel.text = "Time: \(counter)"
-        counter=counter-1
-        if counter == 0 {
+        counter = counter - 1
+        if counter < 0 {
             timer.invalidate()
             timeLabel.text="Egg is ready to eat!"
             eggImage.image = UIImage(named: "egg2")
@@ -41,11 +41,12 @@ class DetailVC: UIViewController {
     
 
     @IBAction func pauseButton(_ sender: UIButton) {
-        if timer.isValid == true{
+        if timer.isValid {
             timer.invalidate()
-            pauseOutlet.titleLabel?.text = "Start"
-        }else{
-            timerFunction()
+            pauseOutlet.setTitle("Start", for: .normal)
+        } else if !timer.isValid {
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
+            pauseOutlet.setTitle("Pause", for: .normal)
         }
        
         
