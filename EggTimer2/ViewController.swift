@@ -11,11 +11,8 @@ class ViewController: UIViewController{
     
     let mainColor = UIColor(named: "buttonColor")
     
-    var eggSize = ""
-    var eggTemp = ""
-    var eggType = ""
-    var cookingTime = 0
-    
+    var egg = Egg()
+            
     @IBOutlet weak var fridegeTemp: UIButton!
     @IBOutlet weak var roomTemp: UIButton!
     @IBOutlet weak var smallSize: UIButton!
@@ -34,93 +31,6 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         configureUI()
         configureButtons()
-    }
-    
-    @objc func eggTypeSelected(_ sender: EggButton){
-        let eggTyper = sender.buttonTitle.text
-        self.eggType = eggTyper ?? ""
-        if eggType == "Soft"{
-            softButton.alpha = 1
-            mediumButton.alpha = 0.5
-            hardButton.alpha = 0.5
-        }else if eggType == "Medium"{
-            softButton.alpha = 0.5
-            mediumButton.alpha = 1
-            hardButton.alpha = 0.5
-        }else{
-            softButton.alpha = 0.5
-            mediumButton.alpha = 0.5
-            hardButton.alpha = 1
-        }
-    }
-    
-    @IBAction func conditionSelected(_ sender: UIButton) {
-        
-        if let eggTemper = sender.titleLabel?.text{
-            self.eggTemp = eggTemper
-            if sender.titleLabel?.text == "Fridge Temperature"{
-                fridegeTemp.alpha = 1
-                roomTemp.alpha = 0.5
-                
-            }else{
-                fridegeTemp.alpha = 0.5
-                roomTemp.alpha = 1
-            }
-        }
-    }
-    
-    
-    @IBAction func sizeSelected(_ sender: UIButton) {
-        if sender.titleLabel?.text == "M"{
-            mediumSize.alpha = 1
-            smallSize.alpha = 0.5
-            largeSize.alpha = 0.5
-        }else if sender.titleLabel?.text == "S"{
-            mediumSize.alpha = 0.5
-            smallSize.alpha = 1
-            largeSize.alpha = 0.5
-        }else{
-            mediumSize.alpha = 0.5
-            smallSize.alpha = 0.5
-            largeSize.alpha = 1
-            
-        }
-        if let eggSizer = sender.titleLabel?.text{
-            self.eggSize = eggSizer
-        }
-    }
-    
-    
-    
-    @IBAction func startCook(_ sender: UIButton) {
-        if eggTemp == ""{
-            makeAlert(titleInput:"Error" , messageInput: "select egg temperature")
-        }else if eggSize == ""{
-            makeAlert(titleInput:"Error" , messageInput: "select egg size")
-        }else if eggType == ""{
-            makeAlert(titleInput:"Error" , messageInput: "select egg type")
-        }else{
-            var cookStart = GetEstimated()
-            cookingTime = cookStart.getEstimatedBoiledTime(tempature: eggTemp, size: eggSize, hardness: eggType)
-        }
-        performSegue(withIdentifier: "toDetailVC", sender: nil)
-    }
-        
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetailVC"{
-            let destinationVC = segue.destination as! DetailVC
-            destinationVC.counter = cookingTime
-            destinationVC.eggLabel = eggType
-            
-            
-        }
-    }
-    
-    func makeAlert(titleInput:String,messageInput:String){
-        let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
-        let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-        alert.addAction(okButton)
-        self.present(alert, animated: true, completion: nil)
     }
     
     func configureUI() {
@@ -150,10 +60,72 @@ class ViewController: UIViewController{
             eggButtonStackview.heightAnchor.constraint(equalToConstant: 150)
         ])
         
+        fridegeTemp.tag = 1
+        roomTemp.tag = 2
+        
+        smallSize.tag = 1
+        mediumSize.tag = 2
+        largeSize.tag = 3
+        
+        softButton.tag = 1
+        mediumButton.tag = 2
+        hardButton.tag = 3
+        
         softButton.addTarget(self, action: #selector(eggTypeSelected), for: .touchUpInside)
         mediumButton.addTarget(self, action: #selector(eggTypeSelected), for: .touchUpInside)
         hardButton.addTarget(self, action: #selector(eggTypeSelected), for: .touchUpInside)
+        
+        fridegeTemp.addTarget(self, action: #selector(temperatureSelected), for: .touchUpInside)
+        roomTemp.addTarget(self, action: #selector(temperatureSelected), for: .touchUpInside)
+        
+        smallSize.addTarget(self, action: #selector(sizeSelected), for: .touchUpInside)
+        mediumSize.addTarget(self, action: #selector(sizeSelected), for: .touchUpInside)
+        largeSize.addTarget(self, action: #selector(sizeSelected), for: .touchUpInside)
+    }
+    
+    @objc func eggTypeSelected(_ sender: EggButton){
+        if sender.tag == 1 {
+            egg.setEggHardness(hardness: .soft)
+        } else if sender.tag == 2 {
+            egg.setEggHardness(hardness: .medium)
+        } else if sender.tag == 3 {
+            egg.setEggHardness(hardness: .hard)
+        }
+    }
 
+    @objc func temperatureSelected(_ sender: UIButton) {
+        
+        if sender.tag == 1 {
+            egg.setEggTemperature(temp: .fridge)
+        } else if sender.tag == 2 {
+            egg.setEggTemperature(temp: .room)
+        }
+    }
+    
+    @objc func sizeSelected(_ sender: UIButton) {
+        if sender.tag == 1 {
+            egg.setEggSize(size: .small)
+        } else if sender.tag == 2 {
+            egg.setEggSize(size: .medium)
+        } else if sender.tag == 3 {
+            egg.setEggSize(size: .large)
+        }
+    }
+    
+    
+    
+    @IBAction func startCook(_ sender: UIButton) {
+        performSegue(withIdentifier: "toDetailVC", sender: nil)
+    }
+        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailVC"{
+            let destinationVC = segue.destination as! DetailVC
+            destinationVC.counter = egg.getEstimatedBoiledTime()
+            destinationVC.eggLabel = egg.getEggLabel()
+            
+            
+        }
     }
     
     func configureButtons() {
