@@ -31,6 +31,103 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         configureUI()
         configureButtons()
+        adjustTemperatureButtonState()
+        adjustHardnessButtonState()
+        adjustSizeButtonState()
+    }
+    
+    
+    
+    @objc func eggTypeSelected(_ sender: EggButton){
+        if sender.tag == 1 {
+            egg.setEggHardness(hardness: .soft)
+        } else if sender.tag == 2 {
+            egg.setEggHardness(hardness: .medium)
+        } else if sender.tag == 3 {
+            egg.setEggHardness(hardness: .hard)
+        }
+        adjustHardnessButtonState()
+    }
+
+    @objc func temperatureSelected(_ sender: UIButton) {
+        
+        if sender.tag == 1 {
+            egg.setEggTemperature(temp: .fridge)
+        } else if sender.tag == 2 {
+            egg.setEggTemperature(temp: .room)
+        }
+        adjustTemperatureButtonState()
+    }
+    
+    @objc func sizeSelected(_ sender: UIButton) {
+        if sender.tag == 1 {
+            egg.setEggSize(size: .small)
+        } else if sender.tag == 2 {
+            egg.setEggSize(size: .medium)
+        } else if sender.tag == 3 {
+            egg.setEggSize(size: .large)
+        }
+        adjustSizeButtonState()
+    }
+    
+    
+    @IBAction func startCook(_ sender: UIButton) {
+        performSegue(withIdentifier: "toDetailVC", sender: nil)
+    }
+        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailVC"{
+            let destinationVC = segue.destination as! DetailVC
+            destinationVC.counter = egg.getEstimatedBoiledTime()
+            destinationVC.eggLabel = egg.getEggLabel()
+            
+            
+        }
+    }
+    
+    func adjustTemperatureButtonState() {
+        switch egg.temperature {
+        case .fridge:
+            roomTemp.alpha = 0.5
+            fridegeTemp.alpha = 1
+        case .room:
+            roomTemp.alpha = 1
+            fridegeTemp.alpha = 0.5
+        }
+    }
+    
+    func adjustHardnessButtonState() {
+        switch egg.hardness {
+        case .soft:
+            softButton.alpha = 1
+            mediumButton.alpha = 0.5
+            hardButton.alpha = 0.5
+        case .medium:
+            softButton.alpha = 0.5
+            mediumButton.alpha = 1
+            hardButton.alpha = 0.5
+        case .hard:
+            softButton.alpha = 0.5
+            mediumButton.alpha = 0.5
+            hardButton.alpha = 1
+        }
+    }
+    
+    func adjustSizeButtonState(){
+        switch egg.size {
+        case .large:
+            smallSize.alpha = 0.5
+            mediumSize.alpha = 0.5
+            largeSize.alpha = 1
+        case .medium:
+            smallSize.alpha = 0.5
+            mediumSize.alpha = 1
+            largeSize.alpha = 0.5
+        case .small:
+            smallSize.alpha = 1
+            mediumSize.alpha = 0.5
+            largeSize.alpha = 0.5
+        }
     }
     
     func configureUI() {
@@ -81,51 +178,6 @@ class ViewController: UIViewController{
         smallSize.addTarget(self, action: #selector(sizeSelected), for: .touchUpInside)
         mediumSize.addTarget(self, action: #selector(sizeSelected), for: .touchUpInside)
         largeSize.addTarget(self, action: #selector(sizeSelected), for: .touchUpInside)
-    }
-    
-    @objc func eggTypeSelected(_ sender: EggButton){
-        if sender.tag == 1 {
-            egg.setEggHardness(hardness: .soft)
-        } else if sender.tag == 2 {
-            egg.setEggHardness(hardness: .medium)
-        } else if sender.tag == 3 {
-            egg.setEggHardness(hardness: .hard)
-        }
-    }
-
-    @objc func temperatureSelected(_ sender: UIButton) {
-        
-        if sender.tag == 1 {
-            egg.setEggTemperature(temp: .fridge)
-        } else if sender.tag == 2 {
-            egg.setEggTemperature(temp: .room)
-        }
-    }
-    
-    @objc func sizeSelected(_ sender: UIButton) {
-        if sender.tag == 1 {
-            egg.setEggSize(size: .small)
-        } else if sender.tag == 2 {
-            egg.setEggSize(size: .medium)
-        } else if sender.tag == 3 {
-            egg.setEggSize(size: .large)
-        }
-    }
-    
-    
-    
-    @IBAction func startCook(_ sender: UIButton) {
-        performSegue(withIdentifier: "toDetailVC", sender: nil)
-    }
-        
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetailVC"{
-            let destinationVC = segue.destination as! DetailVC
-            destinationVC.counter = egg.getEstimatedBoiledTime()
-            destinationVC.eggLabel = egg.getEggLabel()
-            
-            
-        }
     }
     
     func configureButtons() {

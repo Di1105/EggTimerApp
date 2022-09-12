@@ -7,18 +7,18 @@
 
 import Foundation
 
-enum Temperature: CaseIterable {
+enum Temperature {
     case fridge
     case room
 }
 
-enum Size: CaseIterable {
+enum Size {
     case large
     case medium
     case small
 }
 
-enum Hardness: String, CaseIterable {
+enum Hardness: String {
     case soft = "Soft"
     case medium = "Medium"
     case hard = "Hard"
