@@ -19,15 +19,7 @@ class DetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        
-        
-        
-        
-        
-        /*eggImage.image = UIImage(named: "egg1")
-        timeLabel.text = "Time: \(counter)"
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
-        whichEggLabel.text = "\(eggLabel) boiled egg"*/
+    
     }
     
     private func configureUI(){
@@ -39,7 +31,8 @@ class DetailVC: UIViewController {
         
         backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         backButton.tintColor = .label
-        
+        backButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         backButton.translatesAutoresizingMaskIntoConstraints = false
 
@@ -52,30 +45,10 @@ class DetailVC: UIViewController {
             backButton.heightAnchor.constraint(equalToConstant: 18)
             
         ])
-    }
-    
-   /* @objc func timerFunction(){
-        timeLabel.text = "Time: \(counter)"
-        counter=counter-1
-        if counter < 0 {
-            timer.invalidate()
-            timeLabel.text="Egg is ready to eat!"
-            eggImage.image = UIImage(named: "egg2")
-        }
-    }
-    
-
-    @IBAction func pauseButton(_ sender: UIButton) {
-        if timer.isValid{
-            timer.invalidate()
-            pauseOutlet.setTitle("Start", for: .normal)
-        }else{
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
-            pauseOutlet.setTitle("Pause", for: .normal)
-        }
-       
         
-    }*/
-
-
+    }
+    
+    @objc func dismissView(){
+        dismiss(animated: true, completion: nil)
+    }
 }
