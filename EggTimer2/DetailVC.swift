@@ -9,27 +9,27 @@ import UIKit
 
 class DetailVC: UIViewController {
 
-    var counter = 0
+    var boilTime = 0
     var timer = Timer()
     var eggLabel = ""
     
-    @IBOutlet weak var eggImage: UIImageView!
     
-    @IBOutlet weak var whichEggLabel: UILabel!
-    
-    @IBOutlet weak var timeLabel: UILabel!
-    
-    @IBOutlet weak var pauseOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        eggImage.image = UIImage(named: "egg1")
+        
+        
+        
+        
+        
+        
+        /*eggImage.image = UIImage(named: "egg1")
         timeLabel.text = "Time: \(counter)"
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
-        whichEggLabel.text = "\(eggLabel) boiled egg"
+        whichEggLabel.text = "\(eggLabel) boiled egg"*/
     }
     
-    @objc func timerFunction(){
+   /* @objc func timerFunction(){
         timeLabel.text = "Time: \(counter)"
         counter=counter-1
         if counter < 0 {
@@ -50,7 +50,7 @@ class DetailVC: UIViewController {
         }
        
         
-    }
+    }*/
 
 
 }
