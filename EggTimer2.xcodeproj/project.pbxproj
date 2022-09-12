@@ -16,6 +16,7 @@
 		C6A7C47528B61D6D0047868B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6A7C47328B61D6D0047868B /* LaunchScreen.storyboard */; };
 		C6A7C48428B637E00047868B /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A7C48328B637E00047868B /* DetailVC.swift */; };
 		C6B1EB8F28BE94120042474C /* GetEstimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1EB8E28BE94120042474C /* GetEstimated.swift */; };
+		C6B1EB9128CF3B3D0042474C /* TimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1EB9028CF3B3D0042474C /* TimeLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C6A7C47628B61D6D0047868B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6A7C48328B637E00047868B /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		C6B1EB8E28BE94120042474C /* GetEstimated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEstimated.swift; sourceTree = "<group>"; };
+		C6B1EB9028CF3B3D0042474C /* TimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +68,9 @@
 				C6A7C46A28B61D6B0047868B /* SceneDelegate.swift */,
 				C6A7C46C28B61D6B0047868B /* ViewController.swift */,
 				C6A7C48328B637E00047868B /* DetailVC.swift */,
-				12D559B728B915E7009A8608 /* EggButton.swift */,
 				C6B1EB8E28BE94120042474C /* GetEstimated.swift */,
+				12D559B728B915E7009A8608 /* EggButton.swift */,
+				C6B1EB9028CF3B3D0042474C /* TimeLabel.swift */,
 				C6A7C46E28B61D6B0047868B /* Main.storyboard */,
 				C6A7C47128B61D6D0047868B /* Assets.xcassets */,
 				C6A7C47328B61D6D0047868B /* LaunchScreen.storyboard */,
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6B1EB9128CF3B3D0042474C /* TimeLabel.swift in Sources */,
 				C6A7C46D28B61D6B0047868B /* ViewController.swift in Sources */,
 				12D559B828B915E7009A8608 /* EggButton.swift in Sources */,
 				C6A7C48428B637E00047868B /* DetailVC.swift in Sources */,
