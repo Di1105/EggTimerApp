@@ -23,9 +23,9 @@ class ViewController: UIViewController{
     
     var eggButtonStackview = UIStackView()
     
-    var softButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Soft")
-    var mediumButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Medium")
-    var hardButton: EggButton = EggButton(image: UIImage(named: "sample")!, buttonTitle: "Hard")
+    var softButton: EggButton = EggButton(image: UIImage(named: "soft")!, buttonTitle: "Soft\nBoiled")
+    var mediumButton: EggButton = EggButton(image: UIImage(named: "medium")!, buttonTitle: "Medium\nBoiled")
+    var hardButton: EggButton = EggButton(image: UIImage(named: "hard")!, buttonTitle: "Hard\nBoiled")
     
     override func viewDidLoad() {
         super.viewDidLoad()
