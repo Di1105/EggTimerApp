@@ -9,12 +9,8 @@ import UIKit
 
 class DetailVC: UIViewController {
 
-    var boilTime = 0
-    var eggLabel = ""
-    private var timer = Timer()
-    private var titleLabel = UILabel()
-    private var backButton = UIButton()
-    
+    var timeLabel = TimeLabel()
+    var eggImage = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,26 +19,23 @@ class DetailVC: UIViewController {
     }
     
     private func configureUI(){
-        view.addSubview(titleLabel)
-        view.addSubview(backButton)
+        view.addSubview(timeLabel)
+        view.addSubview(eggImage)
         
-        titleLabel.text = "\(eggLabel) Boiled Egg"
-        titleLabel.font = UIFont.systemFont(ofSize: 19)
-        
-        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        backButton.tintColor = .label
-        backButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
-
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        backButton.translatesAutoresizingMaskIntoConstraints = false
+        eggImage.image = UIImage(named: "sample")
+        eggImage.contentMode = .scaleAspectFit
+        eggImage.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 64),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 64),
-            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            backButton.widthAnchor.constraint(equalToConstant: 12),
-            backButton.heightAnchor.constraint(equalToConstant: 18)
+            timeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            timeLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -190),
+            timeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            timeLabel.heightAnchor.constraint(equalToConstant: 250),
+            
+            eggImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
+            eggImage.bottomAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: -160),
+            eggImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+            eggImage.heightAnchor.constraint(equalToConstant: 250)
             
         ])
         
