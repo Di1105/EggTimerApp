@@ -24,7 +24,7 @@ class TimeLabel: UIView {
     }
     
     func updateTime(time: Int) {
-        timeLabel.text = time.timeFormat()
+        timeLabel.text = time.secondsToTime()
     }
     
     private func configureUI() {
@@ -35,7 +35,7 @@ class TimeLabel: UIView {
         border.layer.borderWidth = 2
         border.layer.cornerRadius = 20
         
-        timeLabel.text = timeRemaining.timeFormat()
+        timeLabel.text = timeRemaining.secondsToTime()
         
         timeLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         
@@ -54,14 +54,4 @@ class TimeLabel: UIView {
         ])
     }
 
-}
-
-extension Int {
-    func timeFormat() -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.minute, .second]
-        formatter.unitsStyle = .positional
-
-        return formatter.string(from: TimeInterval(self))!
-    }
 }

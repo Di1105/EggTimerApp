@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12BA763A28EF113000EC050B /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA763928EF113000EC050B /* Int+Extension.swift */; };
 		12D559B828B915E7009A8608 /* EggButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D559B728B915E7009A8608 /* EggButton.swift */; };
 		C6A7C46928B61D6B0047868B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A7C46828B61D6B0047868B /* AppDelegate.swift */; };
 		C6A7C46B28B61D6B0047868B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A7C46A28B61D6B0047868B /* SceneDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12BA763928EF113000EC050B /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		12D559B728B915E7009A8608 /* EggButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EggButton.swift; sourceTree = "<group>"; };
 		C6A7C46528B61D6B0047868B /* EggTimer2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EggTimer2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A7C46828B61D6B0047868B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				C6B1EB8E28BE94120042474C /* GetEstimated.swift */,
 				12D559B728B915E7009A8608 /* EggButton.swift */,
 				C6B1EB9028CF3B3D0042474C /* TimeLabel.swift */,
+				12BA763928EF113000EC050B /* Int+Extension.swift */,
 				C6A7C46E28B61D6B0047868B /* Main.storyboard */,
 				C6A7C47128B61D6D0047868B /* Assets.xcassets */,
 				C6A7C47328B61D6D0047868B /* LaunchScreen.storyboard */,
@@ -151,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6B1EB9128CF3B3D0042474C /* TimeLabel.swift in Sources */,
+				12BA763A28EF113000EC050B /* Int+Extension.swift in Sources */,
 				C6A7C46D28B61D6B0047868B /* ViewController.swift in Sources */,
 				12D559B828B915E7009A8608 /* EggButton.swift in Sources */,
 				C6A7C48428B637E00047868B /* DetailVC.swift in Sources */,
