@@ -9,7 +9,7 @@ import UIKit
 
 class TimeLabel: UIView {
     
-    var timeRemaining = 200
+    var timeRemaining = 0
     
     private var border = UIView()
     private var timeLabel = UILabel()
@@ -23,6 +23,10 @@ class TimeLabel: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateTime(time: Int) {
+        timeLabel.text = time.timeFormat()
+    }
+    
     private func configureUI() {
         addSubview(border)
         addSubview(timeLabel)
@@ -31,13 +35,7 @@ class TimeLabel: UIView {
         border.layer.borderWidth = 2
         border.layer.cornerRadius = 20
         
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.minute, .second]
-        formatter.unitsStyle = .positional
-
-        let formattedString = formatter.string(from: TimeInterval(timeRemaining))!
-        
-        timeLabel.text = formattedString
+        timeLabel.text = timeRemaining.timeFormat()
         
         timeLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         
@@ -56,4 +54,14 @@ class TimeLabel: UIView {
         ])
     }
 
+}
+
+extension Int {
+    func timeFormat() -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.minute, .second]
+        formatter.unitsStyle = .positional
+
+        return formatter.string(from: TimeInterval(self))!
+    }
 }

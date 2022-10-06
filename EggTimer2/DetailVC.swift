@@ -9,23 +9,63 @@ import UIKit
 
 class DetailVC: UIViewController {
 
-    var timeLabel = TimeLabel()
-    var eggImage = UIImageView()
-    var timerButton = UIButton()
+    var timeRemaining: Int?
+    
+    private var timer: Timer?
+    private var timeLabel = TimeLabel()
+    private var eggImage = UIImageView()
+    private var timerButton = UIButton()
+    
+    private var isTimerValid: Bool {
+        if timer != nil {
+            return timer!.isValid
+        } else {
+            return false
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureTimer()
     }
     
     @objc func timerButtonTapped() {
-        //start or pause timer here
+        if isTimerValid {
+            timer?.invalidate()
+            timerButton.setTitle("Start", for: .normal)
+        } else {
+            configureTimer()
+            timerButton.setTitle("Pause", for: .normal)
+        }
+    }
+    
+    private func configureTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1,
+                                         target: self,
+                                         selector: #selector(tick),
+                                         userInfo: nil,
+                                         repeats: true)
+    }
+    
+    @objc private func tick() {
+        timeLabel.updateTime(time: timeRemaining!)
+        timeRemaining = timeRemaining! - 1
+        print(timeRemaining!)
+        if timeRemaining! == 0 {
+            timer?.invalidate()
+            timeLabel.updateTime(time: timeRemaining!)
+            //TODO: show alert here, play sound
+        }
+    
     }
     
     private func configureUI(){
         view.addSubview(timeLabel)
         view.addSubview(eggImage)
         view.addSubview(timerButton)
+        
+        timeLabel.updateTime(time: timeRemaining!)
         
         eggImage.image = UIImage(named: "hard")
         eggImage.contentMode = .scaleAspectFit
