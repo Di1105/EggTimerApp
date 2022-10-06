@@ -51,7 +51,7 @@ struct Egg{
         switch temperature {
         case .fridge:
             switch size {
-            case .large:
+            case .small:
                 switch hardness {
                 case .soft:
                     return 270
@@ -69,7 +69,7 @@ struct Egg{
                 case .hard:
                     return 660
                 }
-            case .small:
+            case .large:
                 switch hardness {
                 case .soft:
                     return 330
@@ -82,7 +82,7 @@ struct Egg{
             
         case .room:
             switch size {
-            case .large:
+            case .small:
                 switch hardness {
                 case .soft:
                     return 240
@@ -100,7 +100,7 @@ struct Egg{
                 case .hard:
                     return 630
                 }
-            case .small:
+            case .large:
                 switch hardness {
                 case .soft:
                     return 300
