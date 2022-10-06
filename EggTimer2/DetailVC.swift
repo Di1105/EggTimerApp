@@ -64,8 +64,14 @@ class DetailVC: UIViewController {
         if timeRemaining! == 0 {
             timer?.invalidate()
             timeLabel.updateTime(time: timeRemaining!)
-            //TODO: show alert here, play sound
+            timerEnded()
         }
+    }
+    
+    private func timerEnded() {
+        let alert = UIAlertController(title: "Your egg is ready!", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(alert, animated: true)
     }
     
     private func configureUI(){
