@@ -78,7 +78,8 @@ class ViewController: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailVC"{
             let destinationVC = segue.destination as! DetailVC
-            destinationVC.timeRemaining = egg.getEstimatedBoiledTime()
+            destinationVC.egg = self.egg
+//            destinationVC.timeRemaining = egg.getEstimatedBoiledTime()
 //            destinationVC.eggLabel = egg.getEggLabel()
             
             

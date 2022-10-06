@@ -9,8 +9,9 @@ import UIKit
 
 class DetailVC: UIViewController {
 
-    var timeRemaining: Int?
-    
+    var egg: Egg?
+
+    private lazy var timeRemaining: Int? = egg?.getEstimatedBoiledTime()
     private var timer: Timer?
     private var timeLabel = TimeLabel()
     private var eggImage = UIImageView()
@@ -81,7 +82,7 @@ class DetailVC: UIViewController {
         
         timeLabel.updateTime(time: timeRemaining!)
         
-        eggImage.image = UIImage(named: "hard")
+        eggImage.image = UIImage(named: egg!.hardness.rawValue.lowercased())
         eggImage.contentMode = .scaleAspectFit
         eggImage.translatesAutoresizingMaskIntoConstraints = false
         
@@ -89,6 +90,7 @@ class DetailVC: UIViewController {
         timerButton.addTarget(self, action: #selector(timerButtonTapped), for: .touchUpInside)
         timerButton.backgroundColor = UIColor(named: "buttonColor")
         timerButton.setTitle("Pause", for: .normal)
+        timerButton.setTitleColor(.systemBackground, for: .normal)
         timerButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
@@ -107,7 +109,6 @@ class DetailVC: UIViewController {
             timerButton.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: -30),
             timerButton.heightAnchor.constraint(equalToConstant: 60)
         ])
-        
     }
     
     @objc func dismissView(){
