@@ -30,6 +30,15 @@ class DetailVC: UIViewController {
         configureTimer()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        invalidateTimer()
+    }
+    
+    private func invalidateTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
     @objc func timerButtonTapped() {
         if isTimerValid {
             timer?.invalidate()
@@ -57,7 +66,6 @@ class DetailVC: UIViewController {
             timeLabel.updateTime(time: timeRemaining!)
             //TODO: show alert here, play sound
         }
-    
     }
     
     private func configureUI(){
