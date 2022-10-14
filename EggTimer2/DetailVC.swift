@@ -16,6 +16,8 @@ class DetailVC: UIViewController {
     private var timeLabel = TimeLabel()
     private var eggImage = UIImageView()
     private var timerButton = UIButton()
+    private var screenTitle = UILabel()
+    private var dismissButton = UIButton()
     
     private var isTimerValid: Bool {
         if timer != nil {
@@ -79,6 +81,8 @@ class DetailVC: UIViewController {
         view.addSubview(timeLabel)
         view.addSubview(eggImage)
         view.addSubview(timerButton)
+        view.addSubview(screenTitle)
+        view.addSubview(dismissButton)
         
         timeLabel.updateTime(time: timeRemaining!)
         
@@ -92,7 +96,15 @@ class DetailVC: UIViewController {
         timerButton.setTitle("Pause", for: .normal)
         timerButton.setTitleColor(.systemBackground, for: .normal)
         timerButton.translatesAutoresizingMaskIntoConstraints = false
-
+        
+        screenTitle.text = "Egg"
+        screenTitle.translatesAutoresizingMaskIntoConstraints = false
+        
+        dismissButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        dismissButton.setImage(UIImage(systemName: "multiply"), for: .normal)
+        dismissButton.translatesAutoresizingMaskIntoConstraints = false
+                               
+                               
         NSLayoutConstraint.activate([
             timeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             timeLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -190),
@@ -107,7 +119,16 @@ class DetailVC: UIViewController {
             timerButton.leadingAnchor.constraint(equalTo: timeLabel.leadingAnchor, constant: 18),
             timerButton.trailingAnchor.constraint(equalTo: timeLabel.trailingAnchor, constant: -18),
             timerButton.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: -30),
-            timerButton.heightAnchor.constraint(equalToConstant: 60)
+            timerButton.heightAnchor.constraint(equalToConstant: 60),
+            
+            screenTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            screenTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            
+            dismissButton.centerYAnchor.constraint(equalTo: screenTitle.centerYAnchor),
+            dismissButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            dismissButton.heightAnchor.constraint(equalToConstant: 18),
+            dismissButton.widthAnchor.constraint(equalToConstant: 12)
+            
         ])
     }
     
