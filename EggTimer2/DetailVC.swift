@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class DetailVC: UIViewController {
 
@@ -73,7 +74,8 @@ class DetailVC: UIViewController {
     
     private func timerEnded() {
         let alert = UIAlertController(title: "Your egg is ready!", message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        AudioServicesPlayAlertSound(1304)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alert, animated: true)
     }
     
@@ -103,7 +105,8 @@ class DetailVC: UIViewController {
         dismissButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         dismissButton.setImage(UIImage(systemName: "multiply"), for: .normal)
         dismissButton.translatesAutoresizingMaskIntoConstraints = false
-                               
+        dismissButton.tintColor = UIColor(named: "buttonColor")
+                            
                                
         NSLayoutConstraint.activate([
             timeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
