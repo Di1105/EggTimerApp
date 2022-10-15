@@ -100,6 +100,7 @@ class DetailVC: UIViewController {
         timerButton.translatesAutoresizingMaskIntoConstraints = false
         
         screenTitle.text = " \(egg!.hardness.rawValue) Boiled Egg"
+        screenTitle.font = UIFont.systemFont(ofSize: 19, weight: .medium)
         screenTitle.translatesAutoresizingMaskIntoConstraints = false
         
         dismissButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)

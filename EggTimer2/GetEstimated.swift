@@ -54,7 +54,7 @@ struct Egg{
             case .small:
                 switch hardness {
                 case .soft:
-                    return 3
+                    return 270
                 case .medium:
                     return 390
                 case .hard:
