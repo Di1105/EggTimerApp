@@ -34,6 +34,7 @@ class ViewController: UIViewController{
         adjustTemperatureButtonState()
         adjustHardnessButtonState()
         adjustSizeButtonState()
+        disableIdleTimer()
     }
     
     
@@ -84,6 +85,10 @@ class ViewController: UIViewController{
             
             
         }
+    }
+    
+    func disableIdleTimer() {
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     func adjustTemperatureButtonState() {
