@@ -99,7 +99,7 @@ class DetailVC: UIViewController {
         timerButton.setTitleColor(.systemBackground, for: .normal)
         timerButton.translatesAutoresizingMaskIntoConstraints = false
         
-        screenTitle.text = "Egg"
+        screenTitle.text = " \(egg!.hardness.rawValue) Boiled Egg"
         screenTitle.translatesAutoresizingMaskIntoConstraints = false
         
         dismissButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
