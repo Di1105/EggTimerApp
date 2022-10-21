@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import UserNotifications
 
 class DetailVC: UIViewController {
 
@@ -19,6 +20,7 @@ class DetailVC: UIViewController {
     private var timerButton = UIButton()
     private var screenTitle = UILabel()
     private var dismissButton = UIButton()
+
     
     private var isTimerValid: Bool {
         if timer != nil {
@@ -38,6 +40,21 @@ class DetailVC: UIViewController {
         invalidateTimer()
     }
     
+    private func addNotification(){
+        let center = UNUserNotificationCenter.current()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Egg is ready!"
+        content.sound = UNNotificationSound.default
+
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0, repeats: false)
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        center.add(request, withCompletionHandler: nil)
+
+    }
+    
     private func invalidateTimer() {
         timer?.invalidate()
         timer = nil
@@ -52,6 +69,7 @@ class DetailVC: UIViewController {
             timerButton.setTitle("Pause", for: .normal)
         }
     }
+    
     
     private func configureTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1,
@@ -139,4 +157,6 @@ class DetailVC: UIViewController {
     @objc func dismissView(){
         dismiss(animated: true, completion: nil)
     }
+    
+    
 }

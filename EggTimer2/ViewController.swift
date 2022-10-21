@@ -80,13 +80,13 @@ class ViewController: UIViewController{
         if segue.identifier == "toDetailVC"{
             let destinationVC = segue.destination as! DetailVC
             destinationVC.egg = self.egg
-//            destinationVC.timeRemaining = egg.getEstimatedBoiledTime()
-//            destinationVC.eggLabel = egg.getEggLabel()
             
             
         }
     }
     
+    
+    //Aplikasyon çalışırken ekranın kapanmasına engel olur
     func disableIdleTimer() {
         UIApplication.shared.isIdleTimerDisabled = true
     }
@@ -213,5 +213,6 @@ class ViewController: UIViewController{
         startButton.setTitleColor(.systemBackground, for: .normal)
         startButton.backgroundColor = UIColor(named: "buttonColor")
     }
+    
 }
 
